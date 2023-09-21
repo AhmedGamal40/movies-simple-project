@@ -73,7 +73,7 @@ export default function MovieDetails() {
                     Home 
                 </button>
             </Link>
-            <a href={movieDetails.homepage} >
+            <a href={movieDetails.homepage} target='blank' >
                 <button
                     style={{ backgroundColor: "#b45b35", border: "none" }}
                     className="btn btn-primary">

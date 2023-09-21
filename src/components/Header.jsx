@@ -1,10 +1,24 @@
 import { Col, Container,  Row} from "react-bootstrap";
 import logoImage  from "../Images/video-camera (1).png"
+import { useDispatch } from "react-redux";
+import {getAllMovies , getAllMovieSearch} from "../Redux/Action/actionMovies"
 
-function Header({search}){
-   const onSearch = (word)=>{
-    search(word)
-   }
+
+
+function Header(){
+    const despatch = useDispatch()
+
+    const onSearch = (word)=>{
+        search(word)
+    }
+    // Search data by API 
+    const search = async (word) => {
+        if(word === ""){
+            despatch(getAllMovies())
+        }else{
+            despatch(getAllMovieSearch(word))
+        }
+        }
     return(
             <div className="nav-style w-100">
                 <Container >

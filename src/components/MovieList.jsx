@@ -2,8 +2,28 @@ import React from 'react'
 import CardMovies from './CardMovies'
 import { Row } from 'react-bootstrap'
 import Pagination from './Pagination'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {getAllMovies} from "../Redux/Action/actionMovies"
 
-export default function MovieList({movies ,getPage,pageCountet }) {
+
+export default function MovieList({ getPage,pageCountet }) {
+  const despatch = useDispatch()
+
+  // run data when start page
+  useEffect(() => {
+    despatch(getAllMovies())
+  }, []);
+
+  // save data by useState
+  const [movies , setMovise] = useState([]);
+
+  // get data by API 
+const dataMovies = useSelector((state) => state.movies)
+useEffect(()=>{
+  setMovise(dataMovies)
+
+},[dataMovies])
   return (
     <Row className='mt-3'>
       {
